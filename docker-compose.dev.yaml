@@ -17,5 +17,7 @@ services:
         build: repo
         container_name: piston_repo
         command: ['--no-build'] # Don't build anything
+        ports:
+            - 8000:8000
         volumes:
             - .:/piston
