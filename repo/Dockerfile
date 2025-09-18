@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y unzip autoconf build-essential libssl-dev \
         pkg-config zlib1g-dev libargon2-dev libsodium-dev libcurl4-openssl-dev \
@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y unzip autoconf build-essential libssl-d
         libbz2-dev liblzma-dev libpcre2-dev gperf bison flex g++ gawk zip && \
         ln -sf /bin/bash /bin/sh && \
         rm -rf /var/lib/apt/lists/* && \
-        update-alternatives --install /usr/bin/python python /usr/bin/python3.7 2
+        update-alternatives --install /usr/bin/python python /usr/bin/python3.9 2
 
 ADD entrypoint.sh mkindex.sh serve.py /
 
