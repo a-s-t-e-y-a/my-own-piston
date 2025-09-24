@@ -44,8 +44,23 @@ expressWs(app);
 
     const pkglist = await fs.readdir(pkgdir);
 
+    // Filter out files, only process directories (language folders)
+    const langDirs = [];
+    for (const item of pkglist) {
+        const itemPath = path.join(pkgdir, item);
+        try {
+            const stats = await fs.stat(itemPath);
+            if (stats.isDirectory()) {
+                langDirs.push(item);
+            }
+        } catch (err) {
+            // Skip items that can't be stat'd
+            logger.debug(`Skipping ${item}: ${err.message}`);
+        }
+    }
+
     const languages = await Promise.all(
-        pkglist.map(lang => {
+        langDirs.map(lang => {
             return fs.readdir(path.join(pkgdir, lang)).then(x => {
                 return x.map(y => path.join(pkgdir, lang, y));
             });

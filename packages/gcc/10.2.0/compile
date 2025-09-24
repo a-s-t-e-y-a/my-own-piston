@@ -6,11 +6,11 @@
 case "${PISTON_LANGUAGE}" in
     c)
         rename 's/$/\.c/' "$@" # Add .c extension
-        gcc -std=c11 *.c -lm
+        gcc -std=c11 -I/opt/json/includes -I/usr/include/cjson *.c -lm -lcjson
         ;;
     c++)
         rename 's/$/\.cpp/' "$@" # Add .cpp extension
-        g++ -std=c++17 *.cpp
+        g++ -std=c++17 -I/opt/json/includes -I/usr/include/nlohmann *.cpp
         ;;
     d)
         rename 's/.code$/\.d/' "$@" # Add .d extension

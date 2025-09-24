@@ -8,7 +8,7 @@ mkdir -p build obj
 
 cd build
 
-curl "https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.gz" -o gcc.tar.gz
+curl "https://mirror.koddos.net/gcc/releases/gcc-14.1.0/gcc-14.1.0.tar.gz" -o gcc.tar.gz
 
 tar xzf gcc.tar.gz --strip-components=1
 

@@ -19,9 +19,19 @@ RUN apt-get update && \
     libncurses6 libncurses5 libedit-dev libseccomp-dev rename procps python3 \
     libreadline-dev libblas-dev liblapack-dev libpcre3-dev libarpack2-dev \
     libfftw3-dev libglpk-dev libqhull-dev libqrupdate-dev libsuitesparse-dev \
-    libsundials-dev libpcre2-dev libcap-dev && \
+    libsundials-dev libpcre2-dev libcap-dev \
+    nlohmann-json3-dev libcjson-dev libcjson1 libjson-simple-java curl && \
     rm -rf /var/lib/apt/lists/*
 RUN useradd -M piston
+
+# Setup JSON libraries and headers
+RUN mkdir -p /opt/json/includes/nlohmann && \
+    curl -L https://github.com/nlohmann/json/releases/download/v3.11.2/json.hpp \
+    -o /opt/json/includes/nlohmann/json.hpp && \
+    chmod 644 /opt/json/includes/nlohmann/json.hpp
+
+# Set up Java classpath for JSON libraries
+ENV CLASSPATH="/usr/share/java/json-simple.jar:$CLASSPATH"
 COPY --from=isolate /usr/local/bin/isolate /usr/local/bin
 COPY --from=isolate /usr/local/etc/isolate /usr/local/etc/isolate
 

@@ -1,0 +1,21 @@
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class SimpleTest {
+    public static void main(String[] args) {
+        System.out.println("Working directory: " + System.getProperty("user.dir"));
+        System.out.println("Classpath: " + System.getProperty("java.class.path"));
+
+        // Simple JSON example
+        JSONObject obj = new JSONObject();
+        obj.put("name", "Alice");
+        obj.put("age", 25);
+
+        JSONArray hobbies = new JSONArray();
+        hobbies.put("reading");
+        hobbies.put("coding");
+        obj.put("hobbies", hobbies);
+
+        System.out.println("JSON Output: " + obj.toString());
+    }
+}

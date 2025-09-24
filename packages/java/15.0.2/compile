@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Compile Java with JSON library support
+mv $1 $1.java
+javac -cp "/usr/share/java/*:./lib/json/*:." $1.java
