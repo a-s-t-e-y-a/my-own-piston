@@ -86,7 +86,7 @@ const options = {
     },
     run_timeout: {
         desc: 'Max time allowed for run stage in milliseconds',
-        default: 3000, // 3 seconds
+        default: 60000, // 1 minute
         parser: parse_int,
         validators: [(x, raw) => !is_nan(x) || `${raw} is not a number`],
     },
@@ -98,7 +98,7 @@ const options = {
     },
     run_cpu_time: {
         desc: 'Max CPU time allowed for run stage in milliseconds',
-        default: 3000, // 3 seconds
+        default: 5000, // 5 seconds
         parser: parse_int,
         validators: [(x, raw) => !is_nan(x) || `${raw} is not a number`],
     },
