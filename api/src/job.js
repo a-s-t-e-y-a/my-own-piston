@@ -161,6 +161,8 @@ class Job {
                 ...this.runtime.env_vars.flat_map(v => ['-E', v]),
                 '-E',
                 `PISTON_LANGUAGE=${this.runtime.language}`,
+                '-E',
+                `PISTON_PKGDIR=${this.runtime.pkgdir}`,
                 `--dir=${this.runtime.pkgdir}`,
                 `--dir=/etc:noexec`,
                 `--processes=${this.runtime.max_process_count}`,
