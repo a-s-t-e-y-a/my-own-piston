@@ -6,7 +6,7 @@ mkdir -p build
 
 cd build
 
-curl "https://www.python.org/ftp/python/3.13.5/Python-3.13.5.tgz" -o python.tar.gz
+curl "https://www.python.org/ftp/python/3.12.0/Python-3.12.0.tgz" -o python.tar.gz
 tar xzf python.tar.gz --strip-components=1
 rm python.tar.gz
 
@@ -19,3 +19,4 @@ cd ..
 rm -rf build
 
 bin/pip3 install numpy scipy pandas pycryptodome whoosh bcrypt passlib sympy xxhash base58 cryptography PyNaCl
+5678
